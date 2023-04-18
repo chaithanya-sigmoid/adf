@@ -47,6 +47,35 @@
 					},
 					"activities": [
 						{
+							"name": "Lookup2",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TableName = ''', item().TableName, '''')",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "lookup",
+									"type": "DatasetReference"
+								},
+								"firstRowOnly": false
+							}
+						},
+						{
 							"name": "Data flow1",
 							"type": "ExecuteDataFlow",
 							"dependsOn": [
@@ -77,22 +106,16 @@
 									},
 									"datasetParameters": {
 										"source1": {
-											"schema": {
-												"value": "@item().table_schema",
-												"type": "Expression"
-											},
+											"schema": "dbo",
 											"table": {
-												"value": "@item().table_name",
+												"value": "@item().TableName",
 												"type": "Expression"
 											}
 										},
 										"sink2": {
-											"schema": {
-												"value": "@item().table_schema",
-												"type": "Expression"
-											},
+											"schema": "dbo",
 											"table": {
-												"value": "@item().table_name",
+												"value": "@item().TableName",
 												"type": "Expression"
 											}
 										}
@@ -104,37 +127,8 @@
 								},
 								"traceLevel": "Fine",
 								"continuationSettings": {
-									"customizedCheckpointKey": "ff76d3d3-4d76-474b-b3fd-d0bf17c17e10"
+									"customizedCheckpointKey": "606f9d26-7103-4b4f-a3e4-5c697d3c2bbc"
 								}
-							}
-						},
-						{
-							"name": "Lookup2",
-							"type": "Lookup",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "AzureSqlSource",
-									"sqlReaderQuery": {
-										"value": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TableName = ''', item().TableName, '''')",
-										"type": "Expression"
-									},
-									"queryTimeout": "02:00:00",
-									"partitionOption": "None"
-								},
-								"dataset": {
-									"referenceName": "lookup",
-									"type": "DatasetReference"
-								},
-								"firstRowOnly": false
 							}
 						}
 					]
