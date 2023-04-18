@@ -17,9 +17,13 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT DISTINCT o.name AS TableName, s.last_user_update\nFROM sys.dm_db_index_usage_stats s\nJOIN sys.objects o ON s.object_id = o.object_id\nWHERE s.database_id = DB_ID() \nAND DATEDIFF(HOUR, s.last_user_update, GETDATE()) <= 24 \nAND o.type = 'U'\nAND o.is_ms_shipped = 0",
+						"sqlReaderQuery": "SELECT  TABLE_SCHEMA,TABLE_NAME\nFROM INFORMATION_SCHEMA.TABLES\nWHERE TABLE_TYPE = 'BASE TABLE'\nAND TABLE_CATALOG=‘sourceDB1’;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "lookup",
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
