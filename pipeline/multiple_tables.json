@@ -61,7 +61,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TABLE_NAME = ''', item().TableName, '''')",
+									"sqlReaderQuery": {
+										"value": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TABLE_NAME = ''', item().TableName, '''')",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -95,8 +98,20 @@
 								"dataflow": {
 									"referenceName": "dataflow1",
 									"type": "DataFlowReference",
+									"parameters": {
+										"column": {
+											"value": "'@{activity('Lookup2').output.value[0]['COLUMN_NAME']}'",
+											"type": "Expression"
+										}
+									},
 									"datasetParameters": {
 										"source1": {
+											"table": {
+												"value": "@item().TableName",
+												"type": "Expression"
+											}
+										},
+										"sink1": {
 											"table": {
 												"value": "@item().TableName",
 												"type": "Expression"

@@ -39,7 +39,7 @@
 				"     insertable:true,",
 				"     updateable:true,",
 				"     upsertable:true,",
-				"     keys:['$column'],",
+				"     keys:[($column)],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
