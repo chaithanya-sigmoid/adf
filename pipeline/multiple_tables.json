@@ -95,11 +95,38 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
+								"dataflow": {
+									"referenceName": "multiple_tables",
+									"type": "DataFlowReference",
+									"parameters": {
+										"column": {
+											"value": "'@{activity('Lookup2').output.value[0]['COLUMN_NAME']}'",
+											"type": "Expression"
+										}
+									},
+									"datasetParameters": {
+										"source1": {
+											"table": {
+												"value": "@item().TableName",
+												"type": "Expression"
+											}
+										},
+										"sink1": {
+											"table1": {
+												"value": "@item().TableName",
+												"type": "Expression"
+											}
+										}
+									}
+								},
 								"compute": {
 									"coreCount": 8,
 									"computeType": "General"
 								},
-								"traceLevel": "Fine"
+								"traceLevel": "Fine",
+								"continuationSettings": {
+									"customizedCheckpointKey": "62efdd9b-ff7f-4f35-af42-a0386a6d362d"
+								}
 							}
 						}
 					]
