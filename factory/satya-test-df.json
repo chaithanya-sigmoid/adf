@@ -1,0 +1,14 @@
+{
+	"name": "satya-test-df",
+	"properties": {
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "false"
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "af5e112b-6575-47c6-b549-96df23362b42",
+		"tenantId": "5e55ef3d-d817-4b50-a373-e843848128cb"
+	}
+}
