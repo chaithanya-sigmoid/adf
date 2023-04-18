@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT  TABLE_SCHEMA,TABLE_NAME\nFROM INFORMATION_SCHEMA.TABLES\nWHERE TABLE_TYPE = 'BASE TABLE'\nAND TABLE_CATALOG=‘sourceDB1’;",
+						"sqlReaderQuery": "SELECT table_schema, table_name \nFROM sourceDB1.information_schema.tables \nWHERE table_type = 'BASE TABLE' \nAND table_schema NOT IN ('pg_catalog', 'information_schema', 'dbo', 'cdc');\n",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -47,31 +47,6 @@
 					},
 					"activities": [
 						{
-							"name": "Lookup2",
-							"type": "Lookup",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "AzureSqlSource",
-									"sqlReaderQuery": {
-										"value": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TABLE_NAME = ''', item().TableName, '''')",
-										"type": "Expression"
-									},
-									"queryTimeout": "02:00:00",
-									"partitionOption": "None"
-								},
-								"firstRowOnly": false
-							}
-						},
-						{
 							"name": "Data flow1",
 							"type": "ExecuteDataFlow",
 							"dependsOn": [
@@ -94,10 +69,30 @@
 								"dataflow": {
 									"referenceName": "multiple_tables",
 									"type": "DataFlowReference",
+									"parameters": {
+										"column": {
+											"value": "'@{activity('Lookup2').output.value[0]['COLUMN_NAME']}'",
+											"type": "Expression"
+										}
+									},
 									"datasetParameters": {
 										"source1": {
+											"schema": {
+												"value": "@item().table_schema",
+												"type": "Expression"
+											},
 											"table": {
-												"value": "@item().TableName",
+												"value": "@item().table_name",
+												"type": "Expression"
+											}
+										},
+										"sink2": {
+											"schema": {
+												"value": "@item().table_schema",
+												"type": "Expression"
+											},
+											"table": {
+												"value": "@item().table_name",
 												"type": "Expression"
 											}
 										}
@@ -111,6 +106,35 @@
 								"continuationSettings": {
 									"customizedCheckpointKey": "ff76d3d3-4d76-474b-b3fd-d0bf17c17e10"
 								}
+							}
+						},
+						{
+							"name": "Lookup2",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TABLE_NAME = ''', item().TABLE_NAME, '''')",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "lookup",
+									"type": "DatasetReference"
+								},
+								"firstRowOnly": false
 							}
 						}
 					]
