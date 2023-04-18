@@ -1,0 +1,9 @@
+{
+	"name": "satya-test-df1",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9dfcc0ec-aa34-430c-b57c-034280b1fb0a",
+		"tenantId": "391fd9bb-00c7-41f3-9b3c-4ba8243fd93a"
+	}
+}
