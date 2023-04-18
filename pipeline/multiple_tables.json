@@ -61,7 +61,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TABLE_NAME = ''', item().TableName, '''')",
+									"sqlReaderQuery": {
+										"value": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TABLE_NAME = ''', item().TableName, '''')",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -106,24 +109,6 @@
 											"table": {
 												"value": "@item().TableName",
 												"type": "Expression"
-											}
-										}
-									},
-									"linkedServiceParameters": {
-										"source1": {
-											"schemaLinkedService": {
-												"table": {
-													"value": "@item().TableName",
-													"type": "Expression"
-												}
-											}
-										},
-										"sink1": {
-											"schemaLinkedService": {
-												"table": {
-													"value": "@item().TableName",
-													"type": "Expression"
-												}
 											}
 										}
 									}
