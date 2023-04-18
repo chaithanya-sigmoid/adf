@@ -15,18 +15,11 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "SQLto ADLS",
-						"type": "DataFlowReference"
-					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
 					},
-					"traceLevel": "Fine",
-					"continuationSettings": {
-						"customizedCheckpointKey": "a169f0a2-d9d6-4f87-9bfe-5d8e08194319"
-					}
+					"traceLevel": "Fine"
 				}
 			}
 		],
