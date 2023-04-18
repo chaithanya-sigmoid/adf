@@ -158,10 +158,7 @@
 				"type": "AzureSqlTable",
 				"schema": [],
 				"typeProperties": {
-					"schema": {
-						"value": "@dataset().schema",
-						"type": "Expression"
-					},
+					"schema": "dbo",
 					"table": {
 						"value": "@dataset().table",
 						"type": "Expression"
@@ -193,10 +190,7 @@
 				"type": "AzureSqlTable",
 				"schema": [],
 				"typeProperties": {
-					"schema": {
-						"value": "@dataset().schema",
-						"type": "Expression"
-					},
+					"schema": "dbo",
 					"table": {
 						"value": "@dataset().table",
 						"type": "Expression"
@@ -371,7 +365,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT table_schema, table_name \nFROM sourceDB1.information_schema.tables \nWHERE table_type = 'BASE TABLE' \nAND table_schema NOT IN ('pg_catalog', 'information_schema', 'dbo', 'cdc');\n",
+								"sqlReaderQuery": "SELECT DISTINCT o.name AS TableName, s.last_user_update\nFROM sys.dm_db_index_usage_stats s\nJOIN sys.objects o ON s.object_id = o.object_id\nWHERE s.database_id = DB_ID() \nAND DATEDIFF(HOUR, s.last_user_update, GETDATE()) <= 24 \nAND o.type = 'U'\nAND o.is_ms_shipped = 0\n",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -480,7 +474,7 @@
 										"source": {
 											"type": "AzureSqlSource",
 											"sqlReaderQuery": {
-												"value": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TABLE_NAME = ''', item().TABLE_NAME, '''')",
+												"value": "@concat('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + ''.'' + CONSTRAINT_NAME), ''IsPrimaryKey'') = 1 AND TableName = ''', item().TableName, '''')",
 												"type": "Expression"
 											},
 											"queryTimeout": "02:00:00",
