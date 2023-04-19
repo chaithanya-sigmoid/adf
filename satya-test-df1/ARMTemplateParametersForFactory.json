@@ -11,7 +11,7 @@
 		"AzureSqlDatabase2_connectionString": {
 			"value": ""
 		},
-		"cdc_dest_connectionString": {
+		"AzureSqlDatabase3_connectionString": {
 			"value": ""
 		},
 		"cdc_source_connectionString": {
