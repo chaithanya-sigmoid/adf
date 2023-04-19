@@ -17,6 +17,9 @@
 		"cdc_source_connectionString": {
 			"value": ""
 		},
+		"linkedService1_connectionString": {
+			"value": ""
+		},
 		"lookupDBsvc_connectionString": {
 			"value": ""
 		}

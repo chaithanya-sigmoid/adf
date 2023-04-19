@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'cdc_source'"
 		},
+		"linkedService1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linkedService1'"
+		},
 		"lookupDBsvc_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'lookupDBsvc'"
@@ -409,6 +413,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/linkedService1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('linkedService1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/lookupDBsvc')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -495,7 +512,24 @@
 							{
 								"name": "dbo.test_table",
 								"properties": {
-									"schema": [],
+									"schema": [
+										{
+											"name": "Id",
+											"dataType": "integer"
+										},
+										{
+											"name": "Name",
+											"dataType": "string"
+										},
+										{
+											"name": "Date",
+											"dataType": "date"
+										},
+										{
+											"name": "test_values",
+											"dataType": "double"
+										}
+									],
 									"dslConnectorProperties": [
 										{
 											"name": "schemaName",
@@ -512,6 +546,14 @@
 										{
 											"name": "netChanges",
 											"value": true
+										},
+										{
+											"name": "allowSchemaDrift",
+											"value": false
+										},
+										{
+											"name": "inferDriftedColumnTypes",
+											"value": false
 										}
 									]
 								}
@@ -564,7 +606,24 @@
 							{
 								"name": "dbo.test_table",
 								"properties": {
-									"schema": [],
+									"schema": [
+										{
+											"name": "Id",
+											"dataType": "integer"
+										},
+										{
+											"name": "Name",
+											"dataType": "string"
+										},
+										{
+											"name": "Date",
+											"dataType": "date"
+										},
+										{
+											"name": "test_values",
+											"dataType": "double"
+										}
+									],
 									"dslConnectorProperties": [
 										{
 											"name": "schemaName",
@@ -573,6 +632,36 @@
 										{
 											"name": "tableName",
 											"value": "test_table"
+										},
+										{
+											"name": "allowSchemaDrift",
+											"value": false
+										},
+										{
+											"name": "inferDriftedColumnTypes",
+											"value": false
+										},
+										{
+											"name": "keys",
+											"value": [
+												"Id"
+											]
+										},
+										{
+											"name": "deletable",
+											"value": true
+										},
+										{
+											"name": "updateable",
+											"value": true
+										},
+										{
+											"name": "upsertable",
+											"value": true
+										},
+										{
+											"name": "defaultToUpsert",
+											"value": true
 										}
 									]
 								}
@@ -646,6 +735,376 @@
 									"type": "linkedservicetype"
 								},
 								"attributeMappingInfo": {
+									"attributeMappings": [
+										{
+											"name": "Date",
+											"type": "Direct",
+											"functionName": "",
+											"attributeReference": {
+												"name": "Date",
+												"entity": "dbo.test_table",
+												"entityConnectionReference": {
+													"connectionName": "cdc_source",
+													"type": "linkedservicetype"
+												}
+											}
+										},
+										{
+											"name": "Id",
+											"type": "Direct",
+											"functionName": "",
+											"attributeReference": {
+												"name": "Id",
+												"entity": "dbo.test_table",
+												"entityConnectionReference": {
+													"connectionName": "cdc_source",
+													"type": "linkedservicetype"
+												}
+											}
+										},
+										{
+											"name": "Name",
+											"type": "Direct",
+											"functionName": "",
+											"attributeReference": {
+												"name": "Name",
+												"entity": "dbo.test_table",
+												"entityConnectionReference": {
+													"connectionName": "cdc_source",
+													"type": "linkedservicetype"
+												}
+											}
+										},
+										{
+											"name": "test_values",
+											"type": "Direct",
+											"functionName": "",
+											"attributeReference": {
+												"name": "test_values",
+												"entity": "dbo.test_table",
+												"entityConnectionReference": {
+													"connectionName": "cdc_source",
+													"type": "linkedservicetype"
+												}
+											}
+										}
+									]
+								}
+							}
+						],
+						"Relationships": []
+					}
+				],
+				"Policy": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 1
+					},
+					"mode": "Microbatch"
+				},
+				"status": "Stopped",
+				"allowVNetOverride": false
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/cdc_source')]",
+				"[concat(variables('factoryId'), '/linkedServices/cdc_dest')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfcdc2')]",
+			"type": "Microsoft.DataFactory/factories/adfcdcs",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"SourceConnectionsInfo": [
+					{
+						"SourceEntities": [
+							{
+								"name": "dbo.test_table",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "schemaName",
+											"value": "dbo"
+										},
+										{
+											"name": "tableName",
+											"value": "test_table"
+										},
+										{
+											"name": "enableNativeCdc",
+											"value": true
+										},
+										{
+											"name": "netChanges",
+											"value": true
+										}
+									]
+								}
+							},
+							{
+								"name": "SalesLT.Address",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "schemaName",
+											"value": "SalesLT"
+										},
+										{
+											"name": "tableName",
+											"value": "Address"
+										},
+										{
+											"name": "enableNativeCdc",
+											"value": true
+										},
+										{
+											"name": "netChanges",
+											"value": true
+										}
+									]
+								}
+							},
+							{
+								"name": "SalesLT.Customer",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "schemaName",
+											"value": "SalesLT"
+										},
+										{
+											"name": "tableName",
+											"value": "Customer"
+										},
+										{
+											"name": "enableNativeCdc",
+											"value": true
+										},
+										{
+											"name": "netChanges",
+											"value": true
+										}
+									]
+								}
+							},
+							{
+								"name": "SalesLT.Product",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "schemaName",
+											"value": "SalesLT"
+										},
+										{
+											"name": "tableName",
+											"value": "Product"
+										},
+										{
+											"name": "enableNativeCdc",
+											"value": true
+										},
+										{
+											"name": "netChanges",
+											"value": true
+										}
+									]
+								}
+							}
+						],
+						"Connection": {
+							"linkedService": {
+								"referenceName": "cdc_source",
+								"type": "LinkedServiceReference"
+							},
+							"linkedServiceType": "AzureSqlDatabase",
+							"type": "linkedservicetype",
+							"isInlineDataset": true,
+							"commonDslConnectorProperties": [
+								{
+									"name": "allowSchemaDrift",
+									"value": true
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": true
+								},
+								{
+									"name": "format",
+									"value": "table"
+								},
+								{
+									"name": "store",
+									"value": "sqlserver"
+								},
+								{
+									"name": "databaseType",
+									"value": "databaseType"
+								},
+								{
+									"name": "database",
+									"value": "database"
+								},
+								{
+									"name": "skipInitialLoad",
+									"value": true
+								}
+							]
+						}
+					}
+				],
+				"TargetConnectionsInfo": [
+					{
+						"TargetEntities": [
+							{
+								"name": "test/dbo.test_table",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "container",
+											"value": "test"
+										},
+										{
+											"name": "fileSystem",
+											"value": "test"
+										},
+										{
+											"name": "folderPath",
+											"value": "dbo.test_table"
+										}
+									]
+								}
+							},
+							{
+								"name": "test/SalesLT.Address",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "container",
+											"value": "test"
+										},
+										{
+											"name": "fileSystem",
+											"value": "test"
+										},
+										{
+											"name": "folderPath",
+											"value": "SalesLT.Address"
+										}
+									]
+								}
+							},
+							{
+								"name": "test/SalesLT.Customer",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "container",
+											"value": "test"
+										},
+										{
+											"name": "fileSystem",
+											"value": "test"
+										},
+										{
+											"name": "folderPath",
+											"value": "SalesLT.Customer"
+										}
+									]
+								}
+							},
+							{
+								"name": "test/SalesLT.Product",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "container",
+											"value": "test"
+										},
+										{
+											"name": "fileSystem",
+											"value": "test"
+										},
+										{
+											"name": "folderPath",
+											"value": "SalesLT.Product"
+										}
+									]
+								}
+							}
+						],
+						"Connection": {
+							"linkedService": {
+								"referenceName": "linkedService1",
+								"type": "LinkedServiceReference"
+							},
+							"linkedServiceType": "AzureBlobStorage",
+							"type": "linkedservicetype",
+							"isInlineDataset": true,
+							"commonDslConnectorProperties": [
+								{
+									"name": "allowSchemaDrift",
+									"value": true
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": true
+								},
+								{
+									"name": "format",
+									"value": "json"
+								}
+							]
+						},
+						"DataMapperMappings": [
+							{
+								"targetEntityName": "test/dbo.test_table",
+								"sourceEntityName": "dbo.test_table",
+								"sourceConnectionReference": {
+									"connectionName": "cdc_source",
+									"type": "linkedservicetype"
+								},
+								"attributeMappingInfo": {
+									"attributeMappings": []
+								}
+							},
+							{
+								"targetEntityName": "test/SalesLT.Address",
+								"sourceEntityName": "SalesLT.Address",
+								"sourceConnectionReference": {
+									"connectionName": "cdc_source",
+									"type": "linkedservicetype"
+								},
+								"attributeMappingInfo": {
+									"attributeMappings": []
+								}
+							},
+							{
+								"targetEntityName": "test/SalesLT.Customer",
+								"sourceEntityName": "SalesLT.Customer",
+								"sourceConnectionReference": {
+									"connectionName": "cdc_source",
+									"type": "linkedservicetype"
+								},
+								"attributeMappingInfo": {
+									"attributeMappings": []
+								}
+							},
+							{
+								"targetEntityName": "test/SalesLT.Product",
+								"sourceEntityName": "SalesLT.Product",
+								"sourceConnectionReference": {
+									"connectionName": "cdc_source",
+									"type": "linkedservicetype"
+								},
+								"attributeMappingInfo": {
 									"attributeMappings": []
 								}
 							}
@@ -664,7 +1123,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/cdc_source')]",
-				"[concat(variables('factoryId'), '/linkedServices/cdc_dest')]"
+				"[concat(variables('factoryId'), '/linkedServices/linkedService1')]"
 			]
 		}
 	]

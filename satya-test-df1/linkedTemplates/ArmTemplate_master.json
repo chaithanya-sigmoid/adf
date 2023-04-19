@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'cdc_source'"
 		},
+		"linkedService1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linkedService1'"
+		},
 		"lookupDBsvc_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'lookupDBsvc'"
@@ -65,6 +69,9 @@
 					},
 					"cdc_source_connectionString": {
 						"value": "[parameters('cdc_source_connectionString')]"
+					},
+					"linkedService1_connectionString": {
+						"value": "[parameters('linkedService1_connectionString')]"
 					},
 					"lookupDBsvc_connectionString": {
 						"value": "[parameters('lookupDBsvc_connectionString')]"
