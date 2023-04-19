@@ -5,6 +5,33 @@
 			{
 				"SourceEntities": [
 					{
+						"name": "dbo.new_one",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "new_one"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn"
+								}
+							]
+						}
+					},
+					{
 						"name": "dbo.abc_table",
 						"properties": {
 							"schema": [],
@@ -313,6 +340,16 @@
 						"attributeMappingInfo": {
 							"attributeMappings": []
 						}
+					},
+					{
+						"sourceEntityName": "dbo.new_one",
+						"sourceConnectionReference": {
+							"connectionName": "cdc_source",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
 					}
 				],
 				"Relationships": []
@@ -325,6 +362,7 @@
 			},
 			"mode": "Microbatch"
 		},
+		"status": "Stopped",
 		"allowVNetOverride": false
 	}
 }
