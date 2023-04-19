@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase3'"
 		},
+		"AzureSqlDatabase4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase4'"
+		},
 		"cdc_source_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'cdc_source'"
@@ -400,6 +404,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase4')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase4_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/cdc_source')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -556,6 +573,30 @@
 										}
 									]
 								}
+							},
+							{
+								"name": "dbo.xyz_table",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "schemaName",
+											"value": "dbo"
+										},
+										{
+											"name": "tableName",
+											"value": "xyz_table"
+										},
+										{
+											"name": "enableNativeCdc",
+											"value": true
+										},
+										{
+											"name": "netChanges",
+											"value": true
+										}
+									]
+								}
 							}
 						],
 						"Connection": {
@@ -603,7 +644,7 @@
 					{
 						"TargetEntities": [
 							{
-								"name": "dbo.test_table_dup",
+								"name": "dbo.abc_table",
 								"properties": {
 									"schema": [],
 									"dslConnectorProperties": [
@@ -613,13 +654,13 @@
 										},
 										{
 											"name": "tableName",
-											"value": "test_table_dup"
+											"value": "abc_table"
 										}
 									]
 								}
 							},
 							{
-								"name": "dbo.abc_table_dup",
+								"name": "dbo.test_table",
 								"properties": {
 									"schema": [],
 									"dslConnectorProperties": [
@@ -629,7 +670,23 @@
 										},
 										{
 											"name": "tableName",
-											"value": "abc_table_dup"
+											"value": "test_table"
+										}
+									]
+								}
+							},
+							{
+								"name": "dbo.xyz_table",
+								"properties": {
+									"schema": [],
+									"dslConnectorProperties": [
+										{
+											"name": "schemaName",
+											"value": "dbo"
+										},
+										{
+											"name": "tableName",
+											"value": "xyz_table"
 										}
 									]
 								}
@@ -637,7 +694,7 @@
 						],
 						"Connection": {
 							"linkedService": {
-								"referenceName": "cdc_source",
+								"referenceName": "AzureSqlDatabase4",
 								"type": "LinkedServiceReference"
 							},
 							"linkedServiceType": "AzureSqlDatabase",
@@ -696,7 +753,7 @@
 						},
 						"DataMapperMappings": [
 							{
-								"targetEntityName": "dbo.abc_table_dup",
+								"targetEntityName": "dbo.abc_table",
 								"sourceEntityName": "dbo.abc_table",
 								"sourceConnectionReference": {
 									"connectionName": "cdc_source",
@@ -707,8 +764,19 @@
 								}
 							},
 							{
-								"targetEntityName": "dbo.test_table_dup",
+								"targetEntityName": "dbo.test_table",
 								"sourceEntityName": "dbo.test_table",
+								"sourceConnectionReference": {
+									"connectionName": "cdc_source",
+									"type": "linkedservicetype"
+								},
+								"attributeMappingInfo": {
+									"attributeMappings": []
+								}
+							},
+							{
+								"targetEntityName": "dbo.xyz_table",
+								"sourceEntityName": "dbo.xyz_table",
 								"sourceConnectionReference": {
 									"connectionName": "cdc_source",
 									"type": "linkedservicetype"
@@ -728,10 +796,12 @@
 					},
 					"mode": "Microbatch"
 				},
+				"status": "Stopped",
 				"allowVNetOverride": false
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/cdc_source')]"
+				"[concat(variables('factoryId'), '/linkedServices/cdc_source')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase4')]"
 			]
 		}
 	]

@@ -14,6 +14,9 @@
 		"AzureSqlDatabase3_connectionString": {
 			"value": ""
 		},
+		"AzureSqlDatabase4_connectionString": {
+			"value": ""
+		},
 		"cdc_source_connectionString": {
 			"value": ""
 		},

@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase3'"
 		},
+		"AzureSqlDatabase4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase4'"
+		},
 		"cdc_source_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'cdc_source'"
@@ -66,6 +70,9 @@
 					},
 					"AzureSqlDatabase3_connectionString": {
 						"value": "[parameters('AzureSqlDatabase3_connectionString')]"
+					},
+					"AzureSqlDatabase4_connectionString": {
+						"value": "[parameters('AzureSqlDatabase4_connectionString')]"
 					},
 					"cdc_source_connectionString": {
 						"value": "[parameters('cdc_source_connectionString')]"
