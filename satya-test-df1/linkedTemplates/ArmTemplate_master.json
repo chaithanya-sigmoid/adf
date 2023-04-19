@@ -15,9 +15,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase2'"
 		},
-		"destsqlDB_connectionString": {
+		"lookupDBsvc_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'destsqlDB'"
+			"metadata": "Secure string for 'connectionString' of 'lookupDBsvc'"
 		},
 		"containerUri": {
 			"type": "string",
@@ -52,8 +52,8 @@
 					"AzureSqlDatabase2_connectionString": {
 						"value": "[parameters('AzureSqlDatabase2_connectionString')]"
 					},
-					"destsqlDB_connectionString": {
-						"value": "[parameters('destsqlDB_connectionString')]"
+					"lookupDBsvc_connectionString": {
+						"value": "[parameters('lookupDBsvc_connectionString')]"
 					}
 				}
 			},
