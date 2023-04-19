@@ -7,7 +7,24 @@
 					{
 						"name": "dbo.test_table",
 						"properties": {
-							"schema": [],
+							"schema": [
+								{
+									"name": "Id",
+									"dataType": "integer"
+								},
+								{
+									"name": "Name",
+									"dataType": "string"
+								},
+								{
+									"name": "Date",
+									"dataType": "date"
+								},
+								{
+									"name": "test_values",
+									"dataType": "double"
+								}
+							],
 							"dslConnectorProperties": [
 								{
 									"name": "schemaName",
@@ -24,6 +41,14 @@
 								{
 									"name": "netChanges",
 									"value": true
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
 								}
 							]
 						}
@@ -76,7 +101,24 @@
 					{
 						"name": "dbo.test_table",
 						"properties": {
-							"schema": [],
+							"schema": [
+								{
+									"name": "Id",
+									"dataType": "integer"
+								},
+								{
+									"name": "Name",
+									"dataType": "string"
+								},
+								{
+									"name": "Date",
+									"dataType": "date"
+								},
+								{
+									"name": "test_values",
+									"dataType": "double"
+								}
+							],
 							"dslConnectorProperties": [
 								{
 									"name": "schemaName",
@@ -85,6 +127,36 @@
 								{
 									"name": "tableName",
 									"value": "test_table"
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
+								},
+								{
+									"name": "keys",
+									"value": [
+										"Id"
+									]
+								},
+								{
+									"name": "deletable",
+									"value": true
+								},
+								{
+									"name": "updateable",
+									"value": true
+								},
+								{
+									"name": "upsertable",
+									"value": true
+								},
+								{
+									"name": "defaultToUpsert",
+									"value": true
 								}
 							]
 						}
@@ -158,7 +230,60 @@
 							"type": "linkedservicetype"
 						},
 						"attributeMappingInfo": {
-							"attributeMappings": []
+							"attributeMappings": [
+								{
+									"name": "Date",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Date",
+										"entity": "dbo.test_table",
+										"entityConnectionReference": {
+											"connectionName": "cdc_source",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "Id",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Id",
+										"entity": "dbo.test_table",
+										"entityConnectionReference": {
+											"connectionName": "cdc_source",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "Name",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Name",
+										"entity": "dbo.test_table",
+										"entityConnectionReference": {
+											"connectionName": "cdc_source",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "test_values",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "test_values",
+										"entity": "dbo.test_table",
+										"entityConnectionReference": {
+											"connectionName": "cdc_source",
+											"type": "linkedservicetype"
+										}
+									}
+								}
+							]
 						}
 					}
 				],
@@ -172,6 +297,7 @@
 			},
 			"mode": "Microbatch"
 		},
+		"status": "Stopped",
 		"allowVNetOverride": false
 	}
 }
