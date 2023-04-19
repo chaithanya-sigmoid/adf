@@ -7,7 +7,24 @@
 					{
 						"name": "dbo.abc_table",
 						"properties": {
-							"schema": [],
+							"schema": [
+								{
+									"name": "DemoId",
+									"dataType": "integer"
+								},
+								{
+									"name": "Name",
+									"dataType": "string"
+								},
+								{
+									"name": "Date",
+									"dataType": "date"
+								},
+								{
+									"name": "test_values",
+									"dataType": "double"
+								}
+							],
 							"dslConnectorProperties": [
 								{
 									"name": "schemaName",
@@ -24,6 +41,14 @@
 								{
 									"name": "netChanges",
 									"value": true
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
 								}
 							]
 						}
@@ -48,6 +73,14 @@
 								{
 									"name": "netChanges",
 									"value": true
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
 								}
 							]
 						}
@@ -72,6 +105,14 @@
 								{
 									"name": "netChanges",
 									"value": true
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
 								}
 							]
 						}
@@ -573,6 +614,14 @@
 								{
 									"name": "tableName",
 									"value": "xyz_table"
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
 								}
 							]
 						}
@@ -580,7 +629,24 @@
 					{
 						"name": "dbo.abc_table",
 						"properties": {
-							"schema": [],
+							"schema": [
+								{
+									"name": "DemoId",
+									"dataType": "integer"
+								},
+								{
+									"name": "Name",
+									"dataType": "string"
+								},
+								{
+									"name": "Date",
+									"dataType": "date"
+								},
+								{
+									"name": "test_values",
+									"dataType": "double"
+								}
+							],
 							"dslConnectorProperties": [
 								{
 									"name": "schemaName",
@@ -589,6 +655,14 @@
 								{
 									"name": "tableName",
 									"value": "abc_table"
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
 								}
 							]
 						}
@@ -605,6 +679,14 @@
 								{
 									"name": "tableName",
 									"value": "test_table"
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
 								}
 							]
 						}
@@ -742,7 +824,60 @@
 							"type": "linkedservicetype"
 						},
 						"attributeMappingInfo": {
-							"attributeMappings": []
+							"attributeMappings": [
+								{
+									"name": "Date",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Date",
+										"entity": "dbo.abc_table",
+										"entityConnectionReference": {
+											"connectionName": "AzureSqlDatabase1",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "DemoId",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "DemoId",
+										"entity": "dbo.abc_table",
+										"entityConnectionReference": {
+											"connectionName": "AzureSqlDatabase1",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "Name",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Name",
+										"entity": "dbo.abc_table",
+										"entityConnectionReference": {
+											"connectionName": "AzureSqlDatabase1",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "test_values",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "test_values",
+										"entity": "dbo.abc_table",
+										"entityConnectionReference": {
+											"connectionName": "AzureSqlDatabase1",
+											"type": "linkedservicetype"
+										}
+									}
+								}
+							]
 						}
 					},
 					{
@@ -766,105 +901,6 @@
 						"attributeMappingInfo": {
 							"attributeMappings": []
 						}
-					},
-					{
-						"targetEntityName": "SalesLT.Address",
-						"sourceEntityName": "SalesLT.Address",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
-					},
-					{
-						"targetEntityName": "SalesLT.Customer",
-						"sourceEntityName": "SalesLT.Customer",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
-					},
-					{
-						"targetEntityName": "SalesLT.CustomerAddress",
-						"sourceEntityName": "SalesLT.CustomerAddress",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
-					},
-					{
-						"targetEntityName": "SalesLT.Product",
-						"sourceEntityName": "SalesLT.Product",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
-					},
-					{
-						"targetEntityName": "SalesLT.ProductCategory",
-						"sourceEntityName": "SalesLT.ProductCategory",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
-					},
-					{
-						"targetEntityName": "SalesLT.ProductDescription",
-						"sourceEntityName": "SalesLT.ProductDescription",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
-					},
-					{
-						"targetEntityName": "SalesLT.ProductModel",
-						"sourceEntityName": "SalesLT.ProductModel",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
-					},
-					{
-						"targetEntityName": "SalesLT.ProductModelProductDescription",
-						"sourceEntityName": "SalesLT.ProductModelProductDescription",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
-					},
-					{
-						"targetEntityName": "SalesLT.SalesOrderDetail",
-						"sourceEntityName": "SalesLT.SalesOrderDetail",
-						"sourceConnectionReference": {
-							"connectionName": "AzureSqlDatabase1",
-							"type": "linkedservicetype"
-						},
-						"attributeMappingInfo": {
-							"attributeMappings": []
-						}
 					}
 				],
 				"Relationships": []
@@ -877,6 +913,7 @@
 			},
 			"mode": "Microbatch"
 		},
+		"status": "Stopped",
 		"allowVNetOverride": false
 	}
 }
