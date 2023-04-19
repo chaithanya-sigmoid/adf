@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT name \nFROM sys.tables \nWHERE schema_id = SCHEMA_ID('dbo');\n\n",
+						"sqlReaderQuery": "SELECT DISTINCT o.name AS TableName, s.last_user_update\nFROM sys.dm_db_index_usage_stats s\nJOIN sys.objects o ON s.object_id = o.object_id\nWHERE s.database_id = DB_ID() \nAND DATEDIFF(HOUR, s.last_user_update, GETDATE()) <= 24 \nAND o.type = 'U'\nAND o.is_ms_shipped = 0\nAND SCHEMA_NAME(o.schema_id) = 'dbo'\n\n",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
