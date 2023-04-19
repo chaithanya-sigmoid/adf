@@ -11,6 +11,12 @@
 		"AzureSqlDatabase2_connectionString": {
 			"value": ""
 		},
+		"cdc_dest_connectionString": {
+			"value": ""
+		},
+		"cdc_source_connectionString": {
+			"value": ""
+		},
 		"lookupDBsvc_connectionString": {
 			"value": ""
 		}
