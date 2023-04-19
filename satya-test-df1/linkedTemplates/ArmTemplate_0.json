@@ -282,7 +282,9 @@
 						"     skipInitialLoad: false,",
 						"     isolationLevel: 'READ_UNCOMMITTED',",
 						"     format: 'table') ~> source1",
-						"source1 alterRow(upsertIf(true())) ~> alterRow1",
+						"source1 alterRow(upsertIf(true()),",
+						"     insertIf(true()),",
+						"     deleteIf(true())) ~> alterRow1",
 						"alterRow1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     deletable:true,",
@@ -323,7 +325,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT DISTINCT o.name AS TableName, s.last_user_update\nFROM sys.dm_db_index_usage_stats s\nJOIN sys.objects o ON s.object_id = o.object_id\nWHERE s.database_id = DB_ID() \nAND DATEDIFF(HOUR, s.last_user_update, GETDATE()) <= 24 \nAND o.type = 'U'\nAND o.is_ms_shipped = 0\nAND SCHEMA_NAME(o.schema_id) = 'dbo'\n",
+								"sqlReaderQuery": "SELECT name \nFROM sys.tables \nWHERE schema_id = SCHEMA_ID('dbo');\n\n",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
