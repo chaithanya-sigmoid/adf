@@ -15,14 +15,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase2'"
 		},
-		"cdc_dest_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'cdc_dest'"
-		},
-		"cdc_source_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'cdc_source'"
-		},
 		"lookupDBsvc_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'lookupDBsvc'"
@@ -128,32 +120,6 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureSqlDatabase2_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/cdc_dest')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('cdc_dest_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/cdc_source')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('cdc_source_connectionString')]"
 				}
 			},
 			"dependsOn": []
