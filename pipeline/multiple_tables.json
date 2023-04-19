@@ -98,6 +98,12 @@
 								"dataflow": {
 									"referenceName": "dataflow1",
 									"type": "DataFlowReference",
+									"parameters": {
+										"column": {
+											"value": "'@{activity('Lookup2').output.value[0]['COLUMN_NAME']}'",
+											"type": "Expression"
+										}
+									},
 									"datasetParameters": {
 										"source1": {
 											"table": {
