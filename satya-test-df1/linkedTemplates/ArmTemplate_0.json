@@ -390,7 +390,7 @@
 									"type": "ExecuteDataFlow",
 									"dependsOn": [
 										{
-											"activity": "Lookup2",
+											"activity": "Wait1",
 											"dependencyConditions": [
 												"Succeeded"
 											]
@@ -438,6 +438,22 @@
 										"continuationSettings": {
 											"customizedCheckpointKey": "56a64971-5200-4047-a041-82395b74026e"
 										}
+									}
+								},
+								{
+									"name": "Wait1",
+									"type": "Wait",
+									"dependsOn": [
+										{
+											"activity": "Lookup2",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 15
 									}
 								}
 							]
