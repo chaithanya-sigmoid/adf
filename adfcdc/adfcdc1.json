@@ -1,0 +1,882 @@
+{
+	"name": "adfcdc1",
+	"properties": {
+		"SourceConnectionsInfo": [
+			{
+				"SourceEntities": [
+					{
+						"name": "dbo.abc_table",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "abc_table"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.test_table",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "test_table"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.xyz_table",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "xyz_table"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.Address",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "Address"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.Customer",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "Customer"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.CustomerAddress",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "CustomerAddress"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.Product",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "Product"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.ProductCategory",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "ProductCategory"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.ProductDescription",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "ProductDescription"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.ProductModel",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "ProductModel"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.ProductModelProductDescription",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "ProductModelProductDescription"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.SalesOrderDetail",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "SalesOrderDetail"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.SalesOrderHeader",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "SalesOrderHeader"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.vProductModelCatalogDescription",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "vProductModelCatalogDescription"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "ModifiedDate"
+								}
+							]
+						}
+					}
+				],
+				"Connection": {
+					"linkedService": {
+						"referenceName": "AzureSqlDatabase1",
+						"type": "LinkedServiceReference"
+					},
+					"linkedServiceType": "AzureSqlDatabase",
+					"type": "linkedservicetype",
+					"isInlineDataset": true,
+					"commonDslConnectorProperties": [
+						{
+							"name": "allowSchemaDrift",
+							"value": true
+						},
+						{
+							"name": "inferDriftedColumnTypes",
+							"value": true
+						},
+						{
+							"name": "format",
+							"value": "table"
+						},
+						{
+							"name": "store",
+							"value": "sqlserver"
+						},
+						{
+							"name": "databaseType",
+							"value": "databaseType"
+						},
+						{
+							"name": "database",
+							"value": "database"
+						},
+						{
+							"name": "skipInitialLoad",
+							"value": true
+						}
+					]
+				}
+			}
+		],
+		"TargetConnectionsInfo": [
+			{
+				"TargetEntities": [
+					{
+						"name": "SalesLT.SalesOrderHeader",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "SalesOrderHeader"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.SalesOrderDetail",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "SalesOrderDetail"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.CustomerAddress",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "CustomerAddress"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.Address",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "Address"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.ProductCategory",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "ProductCategory"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.ProductModelProductDescription",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "ProductModelProductDescription"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.Product",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "Product"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.ProductDescription",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "ProductDescription"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.vProductModelCatalogDescription",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "vProductModelCatalogDescription"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.ProductModel",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "ProductModel"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.Customer",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "Customer"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.xyz_table",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "xyz_table"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.abc_table",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "abc_table"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.test_table",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "test_table"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.vProductAndDescription",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "vProductAndDescription"
+								}
+							]
+						}
+					},
+					{
+						"name": "SalesLT.vGetAllCategories",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "SalesLT"
+								},
+								{
+									"name": "tableName",
+									"value": "vGetAllCategories"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.BuildVersion",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "BuildVersion"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ErrorLog",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ErrorLog"
+								}
+							]
+						}
+					}
+				],
+				"Connection": {
+					"linkedService": {
+						"referenceName": "AzureSqlDatabase2",
+						"type": "LinkedServiceReference"
+					},
+					"linkedServiceType": "AzureSqlDatabase",
+					"type": "linkedservicetype",
+					"isInlineDataset": true,
+					"commonDslConnectorProperties": [
+						{
+							"name": "allowSchemaDrift",
+							"value": true
+						},
+						{
+							"name": "inferDriftedColumnTypes",
+							"value": true
+						},
+						{
+							"name": "format",
+							"value": "table"
+						},
+						{
+							"name": "store",
+							"value": "sqlserver"
+						},
+						{
+							"name": "databaseType",
+							"value": "databaseType"
+						},
+						{
+							"name": "database",
+							"value": "database"
+						},
+						{
+							"name": "deletable",
+							"value": false
+						},
+						{
+							"name": "insertable",
+							"value": true
+						},
+						{
+							"name": "updateable",
+							"value": false
+						},
+						{
+							"name": "upsertable",
+							"value": false
+						},
+						{
+							"name": "skipDuplicateMapInputs",
+							"value": true
+						},
+						{
+							"name": "skipDuplicateMapOutputs",
+							"value": true
+						}
+					]
+				},
+				"DataMapperMappings": [
+					{
+						"targetEntityName": "dbo.abc_table",
+						"sourceEntityName": "dbo.abc_table",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.test_table",
+						"sourceEntityName": "dbo.test_table",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.xyz_table",
+						"sourceEntityName": "dbo.xyz_table",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.Address",
+						"sourceEntityName": "SalesLT.Address",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.Customer",
+						"sourceEntityName": "SalesLT.Customer",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.CustomerAddress",
+						"sourceEntityName": "SalesLT.CustomerAddress",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.Product",
+						"sourceEntityName": "SalesLT.Product",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.ProductCategory",
+						"sourceEntityName": "SalesLT.ProductCategory",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.ProductDescription",
+						"sourceEntityName": "SalesLT.ProductDescription",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.ProductModel",
+						"sourceEntityName": "SalesLT.ProductModel",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.ProductModelProductDescription",
+						"sourceEntityName": "SalesLT.ProductModelProductDescription",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "SalesLT.SalesOrderDetail",
+						"sourceEntityName": "SalesLT.SalesOrderDetail",
+						"sourceConnectionReference": {
+							"connectionName": "AzureSqlDatabase1",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					}
+				],
+				"Relationships": []
+			}
+		],
+		"Policy": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1
+			},
+			"mode": "Microbatch"
+		},
+		"allowVNetOverride": false
+	}
+}
